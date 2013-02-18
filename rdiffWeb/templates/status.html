@@ -11,21 +11,21 @@
 <ul>
 <!--StartDeleteIf:isEntry-->
 <!--StartIncludeIf:failuresOnly-->
-<li><a href="?">Show all</a></li>
+<li><a href="?">Mostrar todos</a></li>
 <!--EndIncludeIf:failuresOnly-->
 <!--StartDeleteIf:failuresOnly-->
-<li><a href="?failures=T">Show errors only</a></li>
+<li><a href="?failures=T">Solo mostrar errores</a></li>
 <!--EndDeleteIf:failuresOnly-->
 <!--EndDeleteIf:isEntry-->
 </ul>
 </div>
 
-<!--StartDeleteIf:messages--><p>There are no recent backups<!--StartDeleteIf:failuresOnly--> to display<!--EndDeleteIf:failuresOnly--><!--StartIncludeIf:failuresOnly--> with errors<!--EndIncludeIf:failuresOnly-->.</p><!--EndDeleteIf:messages-->
+<!--StartDeleteIf:messages--><p>No hay copias recientess<!--StartDeleteIf:failuresOnly--> para mostrar<!--EndDeleteIf:failuresOnly--><!--StartIncludeIf:failuresOnly--> con errores<!--EndIncludeIf:failuresOnly-->.</p><!--EndDeleteIf:messages-->
 
 <!--StartRepeat:messages-->
-<!--StartIncludeIf:isSuccess--><h3 class="backupStatus_success"><a href="^link$">Successful Backups for ^dateString$</a></h3>
+<!--StartIncludeIf:isSuccess--><h3 class="backupStatus_success"><a href="^link$">Copias completas en ^dateString$</a></h3>
 <div>
-<p>The following backups have completed successfully:</p>
+<p>Las siguientes copias son correctas:</p>
 <ul>
    <!--StartRepeat:backups-->
    <li><a class="statusRepoLink" href="^repoLink$">^displayDate$ - ^repo$ - ^size$</a></li>
@@ -34,16 +34,16 @@
 </div>
 <!--EndIncludeIf:isSuccess-->
 
-<!--StartDeleteIf:isSuccess--><h3 class="backupStatus_failure"><a href="^link$">Backup Completed with Errors: ^repo$</a></h3>
+<!--StartDeleteIf:isSuccess--><h3 class="backupStatus_failure"><a href="^link$">Copias completas con errores: ^repo$</a></h3>
 <div>
-   <p>The backup to <strong>^repo$</strong> on <strong>^displayDate$</strong>
-   failed with the following errors:</p>
+   <p>La copia de <strong>^repo$</strong> es <strong>^displayDate$</strong>
+   fallo con los siguientes errores:</p>
    <p class="mono">^multiline:errors$</p>
-   <p>Backup size: ^size$</p>
+   <p>Tama&ntilde;o: ^size$</p>
 </div>
 <!--EndDeleteIf:isSuccess-->
    <!--StartIncludeIf:repoErrors-->
-   <p>There following repositories contain errors:</p>
+   <p>Las siguientes carpetas tienen errores:</p>
    <ul>
       <!--StartRepeat:repoErrors-->
       <li><a class="statusRepoLink" href="^repoLink$">^repo$: ^multiline:error$</a></li>

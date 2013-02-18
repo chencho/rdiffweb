@@ -3,10 +3,10 @@
 <table id="history" class="datatable sortable">
 <thead>
    <tr>
-      <th id="date" class="sortable">Date</th>
-      <th id="size" class="sortable">Size</th>
-      <th id="cumulativesize" class="sortable" title="For each backup entry, the cumulative size is the size of the current backup, plus the amount of data that is required to restore to that point in time.">Cumulative Size</th>
-      <th id="result" class="sortable">Result</th>
+      <th id="date" class="sortable">Fecha</th>
+      <th id="size" class="sortable">Tama&ntilde;o</th>
+      <th id="cumulativesize" class="sortable" title="FPara cada copia, hay un extra de memoria para guardar el historico">Total</th>
+      <th id="result" class="sortable">Resultado</th>
    </tr>
 </thead>
 <tbody>
@@ -17,13 +17,13 @@
       <td data-value="^cumulativesizeinbytes$">^cumulativesize$</td>
       <!--StartDeleteIf:errors-->
       <td class="BackupResult">
-          <!--StartIncludeIf:inProgress-->In Progress<!--EndIncludeIf:inProgress-->
-          <!--StartDeleteIf:inProgress-->Success<!--EndDeleteIf:inProgress-->
+          <!--StartIncludeIf:inProgress-->En Progreso<!--EndIncludeIf:inProgress-->
+          <!--StartDeleteIf:inProgress-->Finalizado<!--EndDeleteIf:inProgress-->
       </td>
       <!--EndDeleteIf:errors-->
       <!--StartIncludeIf:errors-->
       <td class="history-error">
-         <a href="javascript:void 0">More...</a>
+         <a href="javascript:void 0">Mas...</a>
       </td>
    </tr>
    <tr class="multiline-error">

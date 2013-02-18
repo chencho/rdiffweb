@@ -1,9 +1,9 @@
 From: ^sender$
-Subject: Backup Failures for ^user$
+Subject: Fallo en backup de^user$
 
-The following backup locations have not been backed up recently:
+Las siguientes localizaciones han fallado recientemente:
 
-Backup Location         Last Backup Date     Max Days Between Backups
+Backup           Ultima fecha     Dias maximos entre copias
 <!--StartRepeat:repos-->
 ^repo$		^lastBackupDate$      ^maxAge$
 <!--EndRepeat:repos-->

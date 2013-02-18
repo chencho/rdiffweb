@@ -8,8 +8,8 @@
 
 <div id="metanav">
 <ul>
-<li class="StartDeleteIf:viewUrl-activeEndDeleteIf:viewUrl-"><a href="StartDeleteIf:viewUrl-#EndDeleteIf:viewUrl-StartIncludeIf:viewUrl-^viewUrl$ EndIncludeIf:viewUrl-">View Folder</a></li>
-<li class="StartDeleteIf:restoreUrl-activeEndDeleteIf:restoreUrl-" ><a href="StartDeleteIf:restoreUrl-#EndDeleteIf:restoreUrl-StartIncludeIf:restoreUrl-^restoreUrl$EndIncludeIf:restoreUrl-">Restore Folder</a></li>
+<li class="StartDeleteIf:viewUrl-activeEndDeleteIf:viewUrl-"><a href="StartDeleteIf:viewUrl-#EndDeleteIf:viewUrl-StartIncludeIf:viewUrl-^viewUrl$ EndIncludeIf:viewUrl-">Ver carpeta</a></li>
+<li class="StartDeleteIf:restoreUrl-activeEndDeleteIf:restoreUrl-" ><a href="StartDeleteIf:restoreUrl-#EndDeleteIf:restoreUrl-StartIncludeIf:restoreUrl-^restoreUrl$EndIncludeIf:restoreUrl-">Restaurar carpeta</a></li>
 </ul>
 </div>
 
@@ -23,10 +23,10 @@
 <table id="files" class="datatable sortable">
 <thead>
    <tr>
-      <th id="name" class="sortable">Name</th>
-      <th id="size" class="sortable">Size</th>
-      <th id="last-revision" class="sortable">Last Revision</th>
-      <th>Previous Revisions</th>
+      <th id="name" class="sortable">Nombre</th>
+      <th id="size" class="sortable">Tama&ntilde;o</th>
+      <th id="last-revision" class="sortable">Ultima Revision</th>
+      <th>Anteriores Versiones</th>
    </tr>
 </thead>
 <tbody>
@@ -42,10 +42,10 @@
       <td data-value="^dateinseconds$">^date$</td>
       <td>
       	 <!--StartIncludeIf:hasPrevRevisions-->
-         <a class="overlay-link" href="#revision-^filename$">^numPrevRevisions$ Previous Revision<!--StartIncludeIf:hasMultipleRevisions-->s<!--EndIncludeIf:hasMultipleRevisions--></a>
+         <a class="overlay-link" href="#revision-^filename$">^numPrevRevisions$ Anteriores Versiones<!--StartIncludeIf:hasMultipleRevisions-->s<!--EndIncludeIf:hasMultipleRevisions--></a>
          <div id="revision-^filename$" class="simple-overlay revisions">
              <div class="overlay-content">
-             <p>Select the revision to be restored.</p>
+             <p>Seleccione la version a restaurar</p>
 	         <ul>
 	            <!--StartRepeat:changeDates-->
 	               <li><a href="^changeDateUrl$">^changeDateStr$</a></li>
@@ -55,7 +55,7 @@
          </div>
          <!--EndIncludeIf:hasPrevRevisions-->
          <!--StartDeleteIf:hasPrevRevisions-->
-         No Previous Revisions
+         Sin revisiones
          <!--EndDeleteIf:hasPrevRevisions-->
       </td>
    </tr>
@@ -68,7 +68,7 @@
 <table class="datatable">
 <thead>
    <tr>
-      <th>Choose a backup to restore</th>
+      <th>Selecciona una copia a restaurar</th>
    </tr>
 </thead>
 <tbody>

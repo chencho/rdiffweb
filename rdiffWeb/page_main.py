@@ -72,12 +72,12 @@ class rdiffPage:
       return self.compileTemplate("page_end.html")
 
    def writeTopLinks(self):
-      pages = [("/status/", "Status")]
+      pages = [("/status/", "Estado")]
       if self.getUserDB().modificationsSupported():
-         pages.append(("/prefs", "Preferences"))
+         pages.append(("/prefs", "Preferencias"))
       if self.getUserDB().userIsAdmin(self.getUsername()):
          pages.append(("/admin", "Admin"))
-      pages.append(("/logout", "Logout"))
+      pages.append(("/logout", "Salir"))
       links = []
       for page in pages:
          (url, title) = page
@@ -102,7 +102,7 @@ class rdiffPage:
       if self.getUserDB().areUserCredentialsValid(username, password):
          cherrypy.session['username'] = username
          return None
-      return "Invalid username or password."
+      return "Usuario o Password incorrectos"
 
    def getUsername(self):
       username = cherrypy.session['username']

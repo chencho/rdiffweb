@@ -39,31 +39,31 @@ class rdiffPreferencesPage(page_main.rdiffPage):
          elif action == 'setRestoreType':
             return self._setRestoreType(parms['restoreType'])
          else:
-            return self._getPrefsPage(errorMessage='Invalid setting.')
+            return self._getPrefsPage(errorMessage='Datos incorrectos.')
          
       return self._getPrefsPage('', '')
    index.exposed = True
    
    def _changePassword(self, currentPassword, newPassword, confirmPassword):
       if not self.getUserDB().modificationsSupported():
-         return self._getPrefsPage(errorMessage="Password changing is not supported with the active user database.")
+         return self._getPrefsPage(errorMessage="No puedes cambiar tu password.")
       
       if not self.getUserDB().areUserCredentialsValid(self.getUsername(), currentPassword):
-         return self._getPrefsPage(errorMessage="The 'Current Password' is invalid.")
+         return self._getPrefsPage(errorMessage="El password actual no coincide")
       
       if newPassword != confirmPassword:
-         return self._getPrefsPage(errorMessage="The passwords do not match.")
+         return self._getPrefsPage(errorMessage="El nuevo password no coincide.")
 
       self.getUserDB().setUserPassword(self.getUsername(), newPassword)      
-      return self._getPrefsPage(statusMessage="Password updated successfully.")
+      return self._getPrefsPage(statusMessage="Password actualizado.")
    
    def _updateRepos(self):
       rdw_spider_repos.findReposForUser(self.getUsername(), self.getUserDB())
-      return self._getPrefsPage(statusMessage="Successfully updated backup locations.")
+      return self._getPrefsPage(statusMessage="Carpetas actualizadas.")
 
    def _setNotifications(self, parms):
       if not self.getUserDB().modificationsSupported():
-         return self._getPrefsPage(errorMessage="Email notification is not supported with the active user database.")
+         return self._getPrefsPage(errorMessage="La notificacions por mial no esta activada")
       
       repos = self.getUserDB().getUserRepoPaths(self.getUsername())
       
@@ -81,20 +81,20 @@ class rdiffPreferencesPage(page_main.rdiffPage):
                   maxDays = int(parms[parmName][0])
                self.getUserDB().setRepoMaxAge(self.getUsername(), backupName, maxDays)
                
-      return self._getPrefsPage(statusMessage="Successfully changed notification settings.")
+      return self._getPrefsPage(statusMessage="Actualizados los datos.")
    
    def _setRestoreType(self, restoreType):
       if not self.getUserDB().modificationsSupported():
-         return self.getPrefsPage(errorMessage="Setting the restore format is not supported with the active user database.")
+         return self.getPrefsPage(errorMessage="No se pueden cambiar los datos")
       
       if restoreType == 'zip' or restoreType == 'tgz':
          self.getUserDB().setUseZipFormat(self.getUsername(), restoreType == 'zip')
       else:
-         return self._getPrefsPage(errorMessage='Invalid restore format.')
-      return self._getPrefsPage(statusMessage="Successfully set restore format.")
+         return self._getPrefsPage(errorMessage='Formato invalido.')
+      return self._getPrefsPage(statusMessage="Formatos actualizados.")
    
    def _getPrefsPage(self, errorMessage="", statusMessage=""):
-      title = "User Preferences"
+      title = "Preferencias"
       email = self.getUserDB().getUserEmail(self.getUsername());
       parms = {
          "title" : title,

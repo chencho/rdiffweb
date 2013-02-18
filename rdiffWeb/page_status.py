@@ -32,14 +32,14 @@ class rdiffStatusPage(page_main.rdiffPage):
          entryTime = rdw_helpers.rdwTime()
          entryTime.initFromString(date)
       except ValueError:
-         return self.writeErrorPage("Invalid date parameter.")
+         return self.writeErrorPage("Fecha invalida.")
 
       if not repo:
          userMessages = self._getUserMessagesForDay(entryTime)
       else:
          # Validate repo parameter
          if not repo in self.getUserDB().getUserRepoPaths(self.getUsername()):
-            return self.writeErrorPage("Access is denied.")
+            return self.writeErrorPage("Accceso denegado.")
          try:
             self.validateUserPath(repo)
          except rdw_helpers.accessDeniedError, error:
@@ -59,15 +59,15 @@ class rdiffStatusPage(page_main.rdiffPage):
    
    def _compileStatusPageTemplate(self, isMainPage, messages, failuresOnly):
       
-      if isMainPage: title = "Backup Status"
-      else: title = "Backup Status Entry"
+      if isMainPage: title = "Estado de copias"
+      else: title = "Estado de copias"
       feedLink = ""
       feedTitle = ""
       if isMainPage:
          feedLink = self._buildStatusFeedUrl(failuresOnly)
-         feedTitle = "Backup status for " + self.getUsername()
+         feedTitle = "Estado de copias para " + self.getUsername()
       
-      page = self.startPage("Backup Status", rssUrl=feedLink, rssTitle=feedTitle)
+      page = self.startPage("Estado de copias", rssUrl=feedLink, rssTitle=feedTitle)
       page = page + self.compileTemplate("status.html",
                                          messages=messages,
                                          feedLink=feedLink,

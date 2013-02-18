@@ -1,53 +1,53 @@
 <div id="page-content">
-<h2>User Preferences</h2>
+<h2>Preferencias</h2>
 
 <!--StartIncludeIf:error--><p class="error">^error$</p><!--EndIncludeIf:error-->
 <!--StartIncludeIf:message--><p class="message">^message$</p><!--EndIncludeIf:message-->
 
 <div id="change-password-div" class="section">
-	<h3>Change Password</h3>
+	<h3>Cambiar Password</h3>
 	<form action="#" method="post">
 		<input style="display:none" name="form" value="setPassword"/>
 		<div id="current-div" class="form-field">
-		    <label for="current">Current password</label>
+		    <label for="current">Password Actual</label>
 		    <input class="textInput" type="password" name="current" id="current"/>
 		</div>
 		<div id="new-div" class="form-field">
-		    <label for="new">New password</label>
+		    <label for="new">Nuevo password</label>
 		    <input class="textInput" type="password" name="new" id="new"/>
 		</div>
 		<div id="confirm-div" class="form-field">
-		    <label for="confirm">Confirm new password</label>
+		    <label for="confirm">Confirma el nuevo password</label>
 		    <input class="textInput" type="password" name="confirm" id="confirm"/>
 		</div>
-	    <input type="submit" value="Change Password" />
+	    <input type="submit" value="Cambiar Password" />
 	</form>
 </div>
 
 <div id="update-repos-div" class="section">
-	<h3>Update backup locations</h3>
-	<p>Refresh the list of repository location to be displayed in the Backup status view.</p>
+	<h3>Actualiza copias</h3>
+	<p>Actualiza las carpetas de copias</p>
 	<form action="#" method="post">
 		<input style="display:none" name="form" value="updateRepos"/>
-		<input type="submit" value="Update backup locations" />
+		<input type="submit" value="Actualizar" />
 	</form>
 </div>
 
 <div id="restore-pref-div" class="section">
-	<h3>Restore format</h3>
-	<p>Select the desired archive format to be used when restoring a directory.</p>
+	<h3>Formato de restauracion</h3>
+	<p>Selecciona el formato de restauracion de carpeta.</p>
 	<form action="#" method="post">
 		<input style="display:none" name="form" value="setRestoreType"/>
 		<div id="restore-type-zip">
 			<input type="radio" name="restoreType" StartIncludeIf:useZipFormat-checked='checked'EndIncludeIf:useZipFormat- value="zip" id="zip" />
-			<label for="zip">Restore my directories in <b>.zip</b> format</label>
+			<label for="zip">Restaura mis carpetas como <b>.zip</b></label>
 		</div>
 		<div id="restore-type-tgz">
 			<input type="radio" name="restoreType" StartDeleteIf:useZipFormat-checked='checked'EndDeleteIf:useZipFormat- value="tgz" id="tgz" />
-			<label for="tgz">Restore my directories in <b>.tar.gz</b> format</label>
+			<label for="tgz">Restaura mis carpetas como <b>.tar.gz</b></label>
 		</div>
-		<p>If unsure, select the zip format.</p>
-		<input type="submit" value="Update Restore Preferences" />
+		<p>Si no estas seguro, selecciona zip.</p>
+		<input type="submit" value="Actualizar" />
 	</form>
 </div>
 

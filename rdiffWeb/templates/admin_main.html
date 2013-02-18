@@ -1,5 +1,5 @@
 <div id="page-content">
-<h2>Admin panel</h2>
+<h2>Admininstrador</h2>
 <!--StartIncludeIf:error--><p class="error">^error$</p><!--EndIncludeIf:error-->
 <!--StartIncludeIf:message--><p class="message">^message$</p><!--EndIncludeIf:message-->
 
@@ -10,11 +10,11 @@
 </div>
 <div id="adduser-overlay" class="simple-overlay">
 <div class="overlay-content">
-    <h3>Add user</h3>
+    <h3>A&ntilde;adir usuario</h3>
     <form action="/admin/" method="post">
     <input style="display:none" name="action" value="add" />
         <div id="add-user-username-div" class="form-field">
-            <label for="username">Username</label>
+            <label for="username">Usuario</label>
             <input type="text" name="username" value="^username$" id="username"/>
         </div>
         <div id="add-user-password-div" class="form-field">
@@ -22,26 +22,26 @@
             <input type="password" name="password" id="password">
         </div>
         <div id="add-user-userroot" class="form-field">
-            <label for="userRoot">User root directory</label>
+            <label for="userRoot">Directorio de backups</label>
             <input type="text" name="userRoot" value="^userRoot$" id="userRoot"/>
         </div>
         <div id="add-user-isadmin" class="form-field">
              <!--StartIncludeIf:isAdmin--><input checked type="checkbox" name="isAdmin" /><!--EndIncludeIf:isAdmin-->
              <!--StartDeleteIf:isAdmin--><input type="checkbox" name="isAdmin" id="isAdmin"/><!--EndDeleteIf:isAdmin-->
-             <label for="isAdmin">Is administrator</label>
+             <label for="isAdmin">Es administrador</label>
         </div>
         <input type="submit" value="Add User" />
     </form>
 </div>
 </div>
     
-<h3>Manage users</h3>
+<h3>Gestion de Usuarios</h3>
 <table class="datatable">
     <thead>
         <tr>
-            <th>Username</th>
-            <th>User root directory</th>
-            <th>Is administrator</th>
+            <th>Usuario</th>
+            <th>Directorio de backups</th>
+            <th>Es administrador</th>
             <th></th>
             <th></th>
         </tr>
@@ -52,32 +52,32 @@
         <td>^username$</td>
         <td>^userRoot$</td>
         <td>
-            <!--StartIncludeIf:isAdmin-->Yes<!--EndIncludeIf:isAdmin-->
+            <!--StartIncludeIf:isAdmin-->Si<!--EndIncludeIf:isAdmin-->
             <!--StartDeleteIf:isAdmin-->No<!--EndDeleteIf:isAdmin-->
         </td>
         <td class="navitem">
-            <a class="overlay-link" href="#edit-^username$">Edit</a>
+            <a class="overlay-link" href="#edit-^username$">Editar</a>
             <div id="edit-^username$" class="simple-overlay">
                 <div class="overlay-content">
-                    <h3>Edit user ^username$</h3>
+                    <h3>Editar usuario ^username$</h3>
                     <form action="#" method="post">
                     <input style="display:none" name="action" value="edit" />
                     <input style="display:none" name="username" value="^username$" />
                     <div id="edit-^username$-userroot" class="form-field">
-                       <label for="^username$-userRoot">User root directory</label>
+                       <label for="^username$-userRoot">Directorio de backups</label>
                        <input type="text" class="textInput" name="userRoot" value="^userRoot$" id="^username$-userRoot"/>
                     </div>
                     <div id="edit-^username$-isadmin" class="form-field">
                        <input StartIncludeIf:isAdmin-checkedEndIncludeIf:isAdmin- type="checkbox" name="isAdmin" id="^username$-isadmin"/>
-                       <label for="^username$-isadmin">Is administrator</label>
+                       <label for="^username$-isadmin">Es administrador</label>
                     </div>
-                    <input type="submit" class="groupboxButton" value="Save Changes" />
+                    <input type="submit" class="groupboxButton" value="Guardar" />
                     </form>
                 </div>
             </div>
         </td>
         <td class="navitem">
-            <a href="/admin/deleteUser?user=^username$" onClick="if(!confirm('Are you sure that you wish to delete user ^username$?')) return(false);">Delete</a>
+            <a href="/admin/deleteUser?user=^username$" onClick="if(!confirm('Seguro que quieres eliminar al usuario ^username$?')) return(false);">Eliminar</a>
         </td>
     </tr>
 <!--EndRepeat:users-->

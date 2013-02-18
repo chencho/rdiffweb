@@ -24,7 +24,7 @@ class rdiffLocationsPage(page_main.rdiffPage):
    ''' Shows the locations page. Will show all available destination
    backup directories. This is the root (/) page '''
    def index(self):
-      page = self.startPage("Backup Locations")
+      page = self.startPage("Carpetas de Backup")
       page = page + self.compileTemplate("repo_listing.html", **self.getParmsForPage(self.getUserDB().getUserRoot(self.getUsername()), self.getUserDB().getUserRepoPaths(self.getUsername())))
       page = page + self.endPage()
       return page
@@ -38,12 +38,12 @@ class rdiffLocationsPage(page_main.rdiffPage):
             reposize = rdw_helpers.formatFileSizeStr(repoHistory.size)
             reposizeinbytes = repoHistory.size
             if repoHistory.inProgress:
-               reposize = "In Progress"
+               reposize = "En Progreso"
             repoDate = repoHistory.date.getDisplayString()
             repodateinseconds = repoHistory.date.getLocalSeconds()
             failed = False
          except librdiff.FileError:
-            logging.exception("Can't get reference on the last backup history for %s" % reponame)
+            logging.exception("No se puede obtener informacion previa de %s" % reponame)
             reposize = "0"
             reposizeinbytes = 0 
             repoDate = "Error"

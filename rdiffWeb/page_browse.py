@@ -30,9 +30,9 @@ class rdiffBrowsePage(page_main.rdiffPage):
          return self.writeErrorPage(str(error))
 
       # NOTE: a blank path parm is allowed, since that just results in a listing of the repo root
-      if not repo: return self.writeErrorPage("Backup location not specified.")
+      if not repo: return self.writeErrorPage("Directorio no especificado.")
       if not repo in self.getUserDB().getUserRepoPaths(self.getUsername()):
-         return self.writeErrorPage("Access is denied.")
+         return self.writeErrorPage("Acceso denegado.")
 
       try:
          parms = self.getParmsForPage(self.getUserDB().getUserRoot(self.getUsername()), repo, path, restore)
@@ -61,7 +61,7 @@ class rdiffBrowsePage(page_main.rdiffPage):
 
       # Set up warning about in-progress backups, if necessary
       if librdiff.backupIsInProgressForRepo(joinPaths(userRoot, repo)):
-         backupWarning = "Warning: a backup is currently in progress to this location.  The displayed data may be inconsistent."
+         backupWarning = "Atencion: una copia se esta ejecutando ahora mismo. Los datos pueden no ser consistentes."
       else:
          backupWarning = ""
 

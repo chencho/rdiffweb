@@ -35,12 +35,12 @@ class rdiffRestorePage(page_main.rdiffPage):
          self.validateUserPath(rdw_helpers.joinPaths(repo, path))
       except rdw_helpers.accessDeniedError, error:
          return self.writeErrorPage(str(error))
-      if not repo: return self.writeErrorPage("Backup location not specified.")
+      if not repo: return self.writeErrorPage("Carpeta de copia no especificada.")
       if not repo in self.getUserDB().getUserRepoPaths(self.getUsername()):
-         return self.writeErrorPage("Access is denied.")
+         return self.writeErrorPage("Acceso denegado.")
 
       if librdiff.backupIsInProgressForRepo(rdw_helpers.joinPaths(self.getUserDB().getUserRoot(self.getUsername()), repo)):
-         return self.writeErrorPage("A backup is currently in progress to this location.  Restores are disabled until this backup is complete.")
+         return self.writeErrorPage("Una copia se esta ejecutando.  La restauracion esta deshabilitada hasta que esta termine.")
 
       try:
          restoreTime = rdw_helpers.rdwTime()
@@ -55,7 +55,7 @@ class rdiffRestorePage(page_main.rdiffPage):
       except librdiff.FileError, error:
          return self.writeErrorPage(error.getErrorString())
       except ValueError:
-         return self.writeErrorPage("Invalid date parameter.")
+         return self.writeErrorPage("Fecha invalida.")
 
       (directory, filename) = os.path.split(filePath)
       filename = filename.replace("\"", "\\\"") # Escape quotes in filename
