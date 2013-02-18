@@ -2,7 +2,7 @@
    <div id="login-container">
    	  <h1>Copias en remoto</h1>
       <!--StartDeleteIf:message-->
-      <p>Introduzca.</p>
+      <p>Introduzca sus datos</p>
       <!--EndDeleteIf:message-->
       <!--StartIncludeIf:message-->
       <p class="warning">^message$</p> 
@@ -11,16 +11,17 @@
       <form method="post" action="^action$">
          <input type="hidden" name="^redirectKey$" value="^redirectValue$" />
             <div class="username">
-               <label for="username">Usuario</label>
+               <label for="username" style="width=2em;">Usuario</label>
                <input type="text" name="^loginKey$" value="^loginValue$" id="username" /><br />
             </div>
             <div class="password">
-               <label for="password">Password</label>
+               <label for="password" style="width=2em;">Password</label>
                <input type="password" name="^passwordKey$" id="password" />
             </div>
          <input class="submit" type="submit" value="Login" />
       </form>
       </div>
+      <br/>
       <div class="copyright">
       	<a href="http://www.tecneca.com" target="_blank">Tecneca Networks, S.L.</a>
       </div>
