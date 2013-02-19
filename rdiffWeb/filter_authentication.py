@@ -27,7 +27,7 @@ _sessionUserNameKey = "username"
 def handle_authentication(authMethod='', checkAuth=None):
    checkLoginAndPassword = checkAuth
    if not checkLoginAndPassword:
-      checkLoginAndPassword = (lambda username, password: u"Invalid username or password")
+      checkLoginAndPassword = (lambda username, password: u"Usuario o password incorrectos")
 
    if cherrypy.request.path_info == _logoutUrl:
       cherrypy.session[_sessionUserNameKey] = None
@@ -82,7 +82,7 @@ def handle_authentication(authMethod='', checkAuth=None):
 
    # write login page
    loginPage = page_main.rdiffPage()
-   cherrypy.response.body = loginPage.compileTemplate("page_start.html", title="Login Required - rdiffWeb", rssLink='', rssTitle='', **loginParms) + loginPage.compileTemplate("login.html", **loginParms)
+   cherrypy.response.body = loginPage.compileTemplate("page_start.html", title="Autentificacion necesaria - copiasenremoto", rssLink='', rssTitle='', **loginParms) + loginPage.compileTemplate("login.html", **loginParms)
    return True
 
 cherrypy.tools.authenticate = cherrypy._cptools.HandlerTool(handle_authentication)

@@ -24,7 +24,7 @@ import rdw_spider_repos
 
 class rdiffAdminPage(page_main.rdiffPage):
    def index(self, **kwargs):
-      if not self._userIsAdmin(): return self.writeErrorPage("Access denied.")
+      if not self._userIsAdmin(): return self.writeErrorPage("Acceso denegado.")
       
       # If we're just showing the initial page, just do that
       if not self._isSubmit():
@@ -38,33 +38,33 @@ class rdiffAdminPage(page_main.rdiffPage):
       
       if action == "edit":
          if not self.getUserDB().userExists(username):
-            return self._generatePageHtml("", "The user does not exist.")
+            return self._generatePageHtml("", "El usuario no existe.")
          
          self.getUserDB().setUserInfo(username, userRoot, userIsAdmin)
-         return self._generatePageHtml("User information modified successfully", "")
+         return self._generatePageHtml("Informacion modificada correctamente", "")
       elif action == "add":
          if self.getUserDB().userExists(username):
-            return self._generatePageHtml("", "The specified user already exists.", username, userRoot, userIsAdmin)
+            return self._generatePageHtml("", "El usuario ya existe.", username, userRoot, userIsAdmin)
          if username == "":
-            return self._generatePageHtml("", "The username is invalid.", username, userRoot, userIsAdmin)
+            return self._generatePageHtml("", "El usuario no es valido.", username, userRoot, userIsAdmin)
          self.getUserDB().addUser(username)
          self.getUserDB().setUserPassword(username, cherrypy.request.params["password"])
          self.getUserDB().setUserInfo(username, userRoot, userIsAdmin)
-         return self._generatePageHtml("User added successfully.", "")
+         return self._generatePageHtml("Usuario incluido correctamente.", "")
       
    index.exposed = True
 
    def deleteUser(self, user):
-      if not self._userIsAdmin(): return self.writeErrorPage("Access denied.")
+      if not self._userIsAdmin(): return self.writeErrorPage("Acceso denegado.")
 
       if not self.getUserDB().userExists(user):
-         return self._generatePageHtml("", "The user does not exist.")
+         return self._generatePageHtml("", "El usuario no existe.")
 
       if user == self.getUsername():
-         return self._generatePageHtml("", "You cannot remove your own account!.")
+         return self._generatePageHtml("", "No puedes eliminar tu cuenta!.")
 
       self.getUserDB().deleteUser(user)
-      return self._generatePageHtml("User account removed.", "")
+      return self._generatePageHtml("Usuario eliminado.", "")
    deleteUser.exposed = True
 
    ############### HELPER FUNCTIONS #####################
@@ -83,5 +83,5 @@ class rdiffAdminPage(page_main.rdiffPage):
                 "isAdmin" : isAdmin,
                 "message" : message,
                 "error" : error }
-      return self.startPage("Administration") + self.compileTemplate("admin_main.html", **parms) + self.endPage()
+      return self.startPage("Administracion") + self.compileTemplate("admin_main.html", **parms) + self.endPage()
 
